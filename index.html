@@ -1,369 +1,403 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Els Ximplets - Proposta de newsletter</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Els Ximplets · Proposta de newsletter</title>
+<style>
+  :root {
+    --morat: #6d4aff;
+    --morat-fosc: #4b2fb3;
+    --negre: #1a1a2e;
+    --gris: #555;
+    --fons: #f7f6fb;
+    --blanc: #ffffff;
+    --verd: #2e7d32;
+    --verd-fons: #e8f5e9;
+    --taronja: #e65100;
+    --taronja-fons: #fff3e0;
+  }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #fafafa;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .header {
-            text-align: center;
-            padding: 20px 0;
-            border-bottom: 3px solid #6d4aff;
-            margin-bottom: 30px;
-        }
+  html { scroll-behavior: smooth; }
 
-        h1 {
-            color: #6d4aff;
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-        }
+  body {
+    font-family: 'Segoe UI', -apple-system, Roboto, Helvetica, Arial, sans-serif;
+    background: var(--fons);
+    color: var(--negre);
+    line-height: 1.7;
+    font-size: 17px;
+  }
 
-        .subtitle {
-            color: #666;
-            font-size: 1rem;
-        }
+  /* ---------- CAPÇALERA ---------- */
+  .capsalera {
+    background: linear-gradient(135deg, var(--morat), var(--morat-fosc));
+    color: #fff;
+    text-align: center;
+    padding: 48px 24px 40px;
+  }
+  .capsalera h1 { font-size: 2rem; margin-bottom: 8px; letter-spacing: 1px; }
+  .capsalera p { opacity: .92; font-size: 1.05rem; }
 
-        .section {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+  main { max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; }
 
-        .section-title {
-            color: #6d4aff;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
-        }
+  /* ---------- SECCIONS ---------- */
+  .bloc {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 28px 22px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(26,26,46,.08);
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .bloc.visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .bloc { opacity: 1; transform: none; transition: none; }
+  }
 
-        .newsletter-example {
-            background: #f8f9ff;
-            border-left: 4px solid #6d4aff;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
-        }
+  .etiqueta {
+    display: inline-block;
+    background: var(--morat);
+    color: #fff;
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  h2 { color: var(--morat); font-size: 1.45rem; margin-bottom: 6px; }
+  h3 { font-size: 1.1rem; color: var(--morat-fosc); margin: 22px 0 10px; }
+  p { margin-bottom: 14px; }
+  .entradeta { color: var(--gris); font-style: italic; margin-bottom: 18px; }
 
-        .pros-cons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 15px;
-        }
+  .divisor {
+    border: none;
+    border-top: 2px dashed #ddd;
+    margin: 26px 0;
+  }
 
-        .pros, .cons {
-            flex: 1;
-            min-width: 250px;
-            padding: 15px;
-            border-radius: 8px;
-        }
+  /* ---------- MAIL EXEMPLE ---------- */
+  .mail {
+    background: #f4f1ff;
+    border-left: 5px solid var(--morat);
+    border-radius: 0 12px 12px 0;
+    padding: 22px 18px;
+    margin: 18px 0;
+  }
+  .mail .cap-mail { font-weight: 700; color: var(--morat-fosc); margin-bottom: 12px; }
+  .mail p { margin-bottom: 10px; }
+  .enllac {
+    display: inline-block;
+    background: var(--morat);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: .9rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 8px 0 14px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .enllac:hover { transform: scale(1.04); box-shadow: 0 4px 14px rgba(109,74,255,.35); }
 
-        .pros {
-            background: #e8f5e9;
-            border-left: 4px solid #4caf50;
-        }
+  .cotilles {
+    background: #fff;
+    border: 1px solid #e5e0ff;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 14px 0;
+  }
+  .cotilles p { margin-bottom: 6px; }
 
-        .cons {
-            background: #fff3e0;
-            border-left: 4px solid #ff9800;
-        }
+  .pd {
+    border-top: 1px solid #ddd0ff;
+    padding-top: 12px;
+    margin-top: 18px;
+  }
+  .pd p { font-size: .95rem; color: #444; }
 
-        .pros h4, .cons h4 {
-            margin-bottom: 10px;
-            font-size: 1rem;
-        }
+  /* ---------- PROS / CONTRES ---------- */
+  .avaluacio { display: flex; flex-direction: column; gap: 14px; margin-top: 22px; }
+  .pros, .contres {
+    padding: 18px;
+    border-radius: 12px;
+  }
+  .pros { background: var(--verd-fons); border-left: 5px solid var(--verd); }
+  .contres { background: var(--taronja-fons); border-left: 5px solid var(--taronja); }
+  .pros h4 { color: var(--verd); margin-bottom: 10px; }
+  .contres h4 { color: #bf6000; margin-bottom: 10px; }
+  .pros ul, .contres ul { padding-left: 4px; list-style: none; }
+  .pros li, .contres li { margin-bottom: 10px; padding-left: 26px; position: relative; }
+  .pros li::before { content: "✔"; position: absolute; left: 0; color: var(--verd); font-weight: 700; }
+  .contres li::before { content: "⚠"; position: absolute; left: 0; }
 
-        .pros ul, .cons ul {
-            list-style: none;
-            padding-left: 0;
-        }
+  .cita {
+    font-style: italic;
+    color: var(--morat-fosc);
+    border-left: 4px solid var(--morat);
+    padding: 10px 16px;
+    margin: 20px 0;
+    font-size: 1.05rem;
+  }
 
-        .pros li::before {
-            content: "✓ ";
-            color: #4caf50;
-            font-weight: bold;
-        }
+  /* ---------- CONCLUSIÓ ---------- */
+  .conclusio {
+    background: linear-gradient(160deg, var(--morat) 0%, var(--morat-fosc) 100%);
+    color: #fff;
+  }
+  .conclusio h2 { color: #fff; }
+  .conclusio .etiqueta { background: rgba(255,255,255,.2); }
+  .dos-mails { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
+  .targeta-mail {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 12px;
+    padding: 18px;
+    transition: transform .25s ease;
+  }
+  .targeta-mail:hover { transform: translateY(-4px); }
+  .targeta-mail h3 { color: #fff; margin-top: 0; }
+  .mes { text-align: center; font-size: 2rem; font-weight: 700; }
 
-        .cons li::before {
-            content: "⚠ ";
-            color: #ff9800;
-            font-weight: bold;
-        }
+  /* ---------- MÈTRIQUES ---------- */
+  .metrica { text-align: center; padding: 10px 0; margin-bottom: 8px; }
+  .metrica .numero { font-size: 2.4rem; font-weight: 800; color: var(--morat); display: block; }
+  .metrica .text { color: var(--gris); }
+  .fletxa { color: var(--morat); font-weight: 700; }
 
-        .conclusion {
-            background: linear-gradient(135deg, #6d4aff 0%, #8b6fd9 100%);
-            color: white;
-            text-align: center;
-        }
+  /* ---------- PASSOS ---------- */
+  .pas { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+  .num-pas {
+    flex-shrink: 0;
+    width: 34px; height: 34px;
+    background: var(--morat); color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+  }
 
-        .comparison {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            margin: 20px 0;
-        }
-
-        .mail-type {
-            background: rgba(255,255,255,0.2);
-            padding: 20px;
-            border-radius: 10px;
-            flex: 1;
-            min-width: 200px;
-            margin: 5px;
-        }
-
-        .mail-type h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .metrics {
-            text-align: center;
-            background: #f0f0f0;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-
-        .metric-item {
-            display: inline-block;
-            margin: 10px 20px;
-            text-align: center;
-        }
-
-        .metric-number {
-            font-size: 2rem;
-            color: #6d4aff;
-            font-weight: bold;
-            display: block;
-        }
-
-        .metric-label {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .next-steps {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #6d4aff;
-        }
-
-        .next-steps ol {
-            padding-left: 20px;
-            margin-top: 10px;
-        }
-
-        .next-steps li {
-            margin-bottom: 10px;
-            font-size: 1rem;
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 15px;
-                font-size: 14px;
-            }
-
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            .section-title {
-                font-size: 1.2rem;
-            }
-
-            .pros-cons {
-                flex-direction: column;
-            }
-
-            .comparison {
-                flex-direction: column;
-            }
-        }
-    </style>
+  footer {
+    text-align: center;
+    color: #888;
+    font-size: .85rem;
+    padding: 24px 16px 32px;
+  }
+</style>
 </head>
 <body>
-    <div class="header">
-        <h1>Els Ximplets</h1>
-        <p class="subtitle">Proposta de newsletter</p>
+
+<header class="capsalera">
+  <h1>ELS XIMPLETS</h1>
+  <p>Proposta de newsletter</p>
+</header>
+
+<main>
+
+  <!-- ================= EXEMPLE 1 ================= -->
+  <section class="bloc">
+    <span class="etiqueta">Exemple 1 · Newsletter amb estructura</span>
+    <h2>El mail que ja saps què trobaràs</h2>
+    <p class="entradeta">Seccions fixes cada setmana: anècdota, frase feta, paraula catalana i producte. Format tipus butlletí, pensat per vendre sense que es noti massa.</p>
+
+    <div class="mail">
+      <p class="mail-cap">Els Ximplets · Newsletter setmanal</p>
+
+      <p>Molt bones família!</p>
+      <p>Sóc el Jordi i això és la news dels Ximplets, un butlletí que t'enviem quan hi pensem, amb totes les novetats del món ximplet.</p>
+      <p><strong>Som-hi!</strong></p>
+
+      <h3>La liada d'en Pere.</h3>
+      <p>Aquests dies el Pere està una mica esverat.</p>
+      <p>Resulta que hi ha un eclipsi, i es veu que l'única manera de veure'l és de "cara al sol" ☀️</p>
+      <p>Coll*ns, normal que es posi nerviós!</p>
+      <p>Qui ens havia de dir que posar-se cara al sol seria una cosa única (com la nostra samarreta per a elles) i que ens ho havíem d'agafar amb alegria i bon humor.</p>
+      <p>En fi, que al final la solució ha vingut de l'altra banda del toll, i la cinta americana ha fet el seu servei.</p>
+      <p>Tema eclipsi tancat, espero que l'hagueu gaudit amb la millor companyia possible.</p>
+
+      <hr class="divisor">
+
+      <h3>Frase de la setmana</h3>
+      <p>Segur que més d'una vegada has utilitzat la frase: "s'ha acabat el bròquil", o com diuen els que han fet l'ESO, "The bròquil is over".</p>
+      <p>Però, saps d'on ve aquesta frase feta?</p>
+      <p>Doncs passa, resulta i es veu, que hi havia una fonda al carrer de la Boqueria per allà al segle XIX, que feia menjar bo i econòmic.</p>
+      <p>Un dels plats estrella era el bròquil. Entenc que et costi d'assimilar, però els Viena i companyia no existien.</p>
+      <p>Molt bé, i?</p>
+      <p>Doncs resulta que a part de fer bon menjar, els cambrers tenien una forma peculiar de "cantar" les comandes, i quan el plat estrella ja s'havia acabat i no en quedava més, s'anunciava a la sala amb un: "s'ha acabat el bròquil!"</p>
+      <p>Amb el temps i la popularitat de la fonda, la frase va sortir del local per convertir-se en sinònim que una cosa ja s'havia acabat, que ja n'hi havia prou, caput, "c'est fini", ja m'entens, no?</p>
+      <p>A tot això cal sumar-hi que el setmanari humorístic republicà "L'Esquella de la Torratxa" en va explicar l'origen per allà al 1899, fent que encara es tornés més popular, fins a arribar als nostres dies.</p>
+      <p>Si el bròquil no és el teu plat preferit, ho entenem, però que això no sigui l'excusa per lluir una frase tan nostra i amb tanta història.</p>
+      <a class="enllac" href="#">👉 enllaç al producte</a>
+
+      <h3>Una paraula, si us plau</h3>
+      <p>Reconec que no l'he fet servir mai, però hòstia, l'he vista i m'ha molat molt.</p>
+      <p>Atenció…</p>
+      <p><strong style="font-size:1.3rem;">Aüc</strong></p>
+      <p>Saps què vol dir?</p>
+      <p>Va, no dissimulis que jo tampoc no entenia ni p*ta idea.</p>
+      <p>Aüc és un crit allargassat, un clam, soroll, o com diem a casa meva, un temperi que no s'hi viu.</p>
+      <p>Aquesta paraula m'ha fet pensar en aquelles converses que comencen amb un "jo només ho dic perquè..." i acaben amb deu persones parlant alhora.</p>
+
+      <div class="cotilles">
+        <p>Nivell de desconeixement: 9,5/10</p>
+        <p>Probabilitat que la teva àvia la conegui: 90%</p>
+        <p>Probabilitat que la facis servir demà: discutible</p>
+        <p>Paraula que mereix tornar: meh</p>
+      </div>
+
+      <p>Hi ha paraules que no necessiten cap explicació, només necessiten una tassa 😉</p>
+      <a class="enllac" href="#">👉 enllaç tassa</a>
+
+      <hr class="divisor">
+
+      <h3>Engrunes de saviesa</h3>
+      <p>La gent que cada dia s'envia quaranta missatges de veu pel WhatsApp, i a sobre, posa l'altaveu perquè tothom els senti… sap que existeixen les trucades?</p>
+      <p><em>- Jordi Gango, aprenent de ximplet -</em></p>
+
+      <h3>Tanquem la paradeta.</h3>
+      <p>Fins aquí la dosi de ximpleries d'avui.</p>
+      <p>Salut i força al… 🤘</p>
+
+      <div class="pd">
+        <p><strong>P.D.</strong> Crec que amb la paraula d'avui m'he passat de frenada, prometo portar-me millor la setmana que ve.</p>
+        <p><strong>P.D.2.</strong> Encara ets aquí? Mira, arribar al final d'aquest mail, amb les ganes que tens de pillar el TikTok, té mèrit… i premi.</p>
+        <p><strong>P.D.3.</strong> Introdueix el codi AÜC en finalitzar la teva compra a la botiga online dels Ximplets i rep un 15% de descompte en la teva compra.</p>
+        <a class="enllac" href="#">🛒 Botó botiga</a>
+      </div>
     </div>
 
-    <!-- EXEMPLE 1 -->
-    <div class="section">
-        <h2 class="section-title">Exemple 1: Newsletter amb estructura</h2>
-        
-        <div class="newsletter-example">
-            <h3>El mail que ja saps què hi trobaràs</h3>
-            <p>Seccions fixes cada setmana: anècdota, frase feta, paraula catalana i producte. Format tipus butlletí, pensat per vendre sense que es noti massa.</p>
-        </div>
+    <div class="avaluacio avaluar">
+      <div class="pros">
+        <h4>✅ Per què funciona</h4>
+        <ul>
+          <li>Estructura fixa i previsible: el lector ja sap què es trobarà cada setmana.</li>
+          <li>Cada secció es pot mesurar i millorar per separat (frase, paraula, producte…).</li>
+          <li>Enllaça de forma natural amb la botiga: frase → producte, paraula → producte.</li>
+          <li>El codi de descompte només surt al final: premia qui llegeix fins baix.</li>
+        </ul>
+      </div>
+      <div class="contres">
+        <h4>⚠ Punt feble</h4>
+        <ul>
+          <li>Pot semblar un butlletí de notícies fred, amb menys espontaneïtat.</li>
+          <li>És un format molt vist. No innova, però tampoc cal que ho faci.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-        <div class="newsletter-example">
-            <h4>Els Ximplets · Newsletter setmanal</h4>
-            <p>Molt bones família!</p>
-            <p>Sóc el Jordi i això és la news dels Ximplets, un butlletí que t'enviem quan hi pensem, amb totes les novetats del món ximplet.</p>
-            <p><strong>Som-hi!</strong></p>
-            
-            <h4>La liada d'en Pere</h4>
-            <p>Aquests dies el Pere està una mica esverat. Resulta que hi ha un eclipsi, i es veu que l'única manera de veure'l és de "cara al sol"</p>
-            <p>Coll***ns, normal que es posi nerviós!</p>
-            <p>Qui ens havia de dir que posar-se cara al sol seria una cosa única (com la nostra samarreta per a elles) i que ens ho havíem d'agafar amb alegria i bon humor.</p>
-            <p>En fi, que al final la solució ha vingut de l'altra banda del toll, i la cinta americana ha fet el seu servei.</p>
-            <p>Tema eclipsi tancat, espero que l'hagueu gaudit amb la millor companyia possible.</p>
+  <!-- ================= EXEMPLE 2 ================= -->
+  <section class="bloc">
+    <span class="etiqueta">Exemple 2 · Newsletter storytelling</span>
+    <h2>El mail que explica el dia a dia</h2>
+    <p class="entradeta">Sense seccions ni fórmula: una història contínua, en primera persona, com si el Pere t'ho expliqués per WhatsApp.</p>
 
-            <h4>Frase de la setmana</h4>
-            <p>Segur que més d'una vegada has utilitzat la frase: "s'ha acabat el bròquil", o com diuen els que han fet l'ESO, "The bròquil is over".</p>
-            <p>Però, saps d'on ve aquesta frase feta? Doncs passa, resulta i es veu que hi havia una fonda al carrer de la Boqueria per allà al segle XIX, que feia menjar bo i econòmic. Un dels plats estrella era el bròquil...</p>
-            
-            <h4>Una paraula, si us plau</h4>
-            <p><strong>Aüç</strong></p>
-            <p>Saps què vol dir? Va, no dissimulis que jo tampoc no entenia ni puta idea.</p>
-            <p>Aüç és un crit allargassat, un clam, soroll, o com diem a casa meva, un temperi que no s'hi viu.</p>
-            <ul>
-                <li>Nivell de desconeixement: 9,5/10</li>
-                <li>Probabilitat que la teva àvia la conegui: 90%</li>
-                <li>Probabilitat que la facis servir demà: discutible</li>
-                <li>Paraula que mereix tornar: meh</li>
-            </ul>
+    <div class="mail">
+      <p class="mail-cap">Els Ximplets · Des del darrere de l'escenari</p>
 
-            <h4>Engrunes de saviesa</h4>
-            <p>La gent que cada dia s'envia quaranta missatges de veu pel WhatsApp, i a sobre, posa l'altaveu perquè tothom els senti... sap que existeixen les trucades?</p>
-            <p><em>- Jordi Gango, aprenent de ximplet</em></p>
-        </div>
+      <p>Molt bones ximplets!</p>
+      <p>Aquí el Pere al peu del canó.</p>
+      <p>Aquesta setmana vaig molt espitat.</p>
+      <p>Resulta que m'ha donat per fer un tomb per les Festes de Gràcia.</p>
+      <p>I mira, què vols que et digui.</p>
+      <p>Les Festes de Gràcia ja no són el que eren.</p>
+      <p>Amb tant turista pel carrer, ja no saps si estàs a un barri de Barcelona o en un "coworking" d'Estats Units.</p>
+      <p>Això sí, la gent de Gràcia aquest any s'ha currat una temàtica literalment de merda. 💩</p>
+      <p>Els catalans, això de la merda, sempre ens ha agradat molt.</p>
+      <p>No sé per què, però l'escatologia, aquí a Catalunya, és l'esport nacional número 1, si no que li diguin al caganer.</p>
+      <p>Els de Gràcia no són els únics que li han fet un homenatge a la merda, als ximplets tenim uns quants exemples d'aquest costum tan nostra.</p>
+      <a class="enllac" href="#">👉 enllaç samarreta, tassa</a>
+      <p>El millor de tot és que ho vam celebrar amb els Allioli Olé, un grup que compleix 10 anys sobre els escenaris, cantant, ballant i donant vida en català a les millors festes del nostre país.</p>
+      <p>Després de tanta festa, ja no tinc el cos per gaires coses més, estic esberlat com un tomàquet madur després d'una pedregada.</p>
+      <p>Així que ara toca descansar, recuperar forces amb les infusions misterioses de la iaia i tornar a la feina.</p>
+      <p>I parlant de feina, als ximplets estem buscant noves idees per al nostre catàleg, així que digues-me, quina paraula, expressió o soroll utilitzes quan la ressaca o el cansament poden amb tu.</p>
+      <p>Salut, força i fins la propera.</p>
 
-        <div class="pros-cons">
-            <div class="pros">
-                <h4>✅ Per què funciona</h4>
-                <ul>
-                    <li>Estructura fixa i previsible: el lector ja sap què es trobarà cada setmana</li>
-                    <li>Cada secció es pot mesurar i millorar per separat (frase, paraula, producte...)</li>
-                    <li>Enllaça de forma natural amb la botiga: frase → producte, paraula → producte</li>
-                    <li>El codi de descompte només surt al final: premia qui llegeix fins a baix</li>
-                </ul>
-            </div>
-            <div class="cons">
-                <h4>⚠ Punt feble</h4>
-                <ul>
-                    <li>Pot semblar un butlletí de notícies fred, amb menys espontaneïtat</li>
-                    <li>És un format molt vist. No innova, però tampoc cal que ho faci</li>
-                </ul>
-            </div>
-        </div>
+      <div class="pd">
+        <p><strong>P.D.</strong> Hòstia, parlar de tanta merda em sembla que m'ha regirat l'estòmac.</p>
+        <p><strong>P.D.2.</strong> No tinc el cap clar perquè també m'he oblidat de dir-te que amb el codi AÜC tens un 15% de descompte a la botiga, vàlid fins diumenge a les 23:59.</p>
+        <p><strong>P.D.3.</strong> Per cert, he conegut un paio de Cadis, i? Res, estigues atent que fliparàs.</p>
+      </div>
     </div>
 
-    <!-- EXEMPLE 2 -->
-    <div class="section">
-        <h2 class="section-title">Exemple 2: Newsletter storytelling</h2>
-        
-        <div class="newsletter-example">
-            <h3>El mail que explica el dia a dia</h3>
-            <p>Sense seccions ni fórmula: una història contínua, en primera persona, com si el Pere t'ho expliqués per WhatsApp.</p>
-        </div>
+    <p class="cita">"No és tan enfocat en la venda, sinó en què la gent ens conegui i connecti."</p>
 
-        <div class="newsletter-example">
-            <h4>Els Ximplets · Des del darrere de l'escenari</h4>
-            <p>Molt bones ximplets! Aquí el Pere al peu del canó.</p>
-            <p>Aquesta setmana vaig molt espitat. Resulta que m'ha donat per fer un tomb per les Festes de Gràcia.</p>
-            <p>I mira, què vols que et digui. Les Festes de Gràcia ja no són el que eren. Amb tant turista pel carrer, ja no saps si estàs a un barri de Barcelona o en un "coworking" d'Estats Units.</p>
-            <p>Això sí, la gent de Gràcia aquest any s'ha currat una temàtica literalment de merda.</p>
-            <p>Els catalans, això de la merda, sempre ens ha agradat molt. No sé per què, però l'escatologia, aquí a Catalunya, és l'esport nacional número 1, sinó que li diguin al caganer.</p>
-        </div>
+    <div class="avaluacio">
+      <div class="pros">
+        <h4>✅ Per què funciona</h4>
+        <ul>
+          <li>Sona a conversa real, no a butlletí corporatiu: connecta molt més.</li>
+          <li>Ensenyar el darrere de l'escenari (anècdotes, "haters", equip) fa sentir el lector part del projecte.</li>
+          <li>Dona una veu pròpia i propera a la marca, diferent del mail de botiga.</li>
+        </ul>
+      </div>
+      <div class="contres">
+        <h4>⚠ Punt feble</h4>
+        <ul>
+          <li>Portar cap a la venda és més forçat: s'ha de vigilar de no fer-ho amb calçador.</li>
+          <li>Si es fa malament, genera rebuig en lloc de connexió.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-        <div class="pros-cons">
-            <div class="pros">
-                <h4>✅ Per què funciona</h4>
-                <ul>
-                    <li>Sona a conversa real, no a butlletí corporatiu: connecta molt més</li>
-                    <li>Ensenyar el darrere l'escenari (anècdotes, "haters", equip) fa sentir el lector part del projecte</li>
-                    <li>Dona una veu pròpia i propera a la marca, diferent del mail de botiga</li>
-                </ul>
-            </div>
-            <div class="cons">
-                <h4>⚠ Punt feble</h4>
-                <ul>
-                    <li>Portar cap a la venda és més forçat: s'ha de vigilar de no fer-ho amb calçador</li>
-                    <li>Si es fa malament, genera rebuig en lloc de connexió</li>
-                </ul>
-            </div>
-        </div>
+  <!-- ================= CONCLUSIÓ ================= -->
+  <section class="bloc conclusio">
+    <span class="etiqueta">Conclusió</span>
+    <h2>No cal triar. Fem els dos.</h2>
+    <p>La proposta no és quedar-nos amb un format i descartar l'altre: és enviar-ne un de cada, cada setmana. Es complementen a la perfecció i cadascun fa una feina diferent.</p>
+
+    <div class="dos-mails">
+      <div class="targeta-mail">
+        <h3>📧 MAIL 1 · BOTIGA</h3>
+        <p><strong>El corporatiu, amb estructura.</strong> Ensenya coses en català, amb humor, format fix i enllaç directe a producte. El motor de vendes.</p>
+      </div>
+      <p style="text-align:center; font-size:1.6rem; margin:0;">+</p>
+      <div class="targeta-mail">
+        <h3>💬 MAIL 2 · PERSONAL</h3>
+        <p><strong>El storytelling, gamberro.</strong> Explica el dia a dia, les anècdotes i el darrere de l'escenari. El motor de connexió i confiança.</p>
+      </div>
     </div>
 
-    <!-- CONCLUSIÓ -->
-    <div class="section conclusion">
-        <h2 class="section-title" style="color: white; border-bottom-color: rgba(255,255,255,0.3);">Conclusió</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 20px;"><strong>No cal triar. Fem els dos.</strong></p>
-        <p>La proposta no és quedar-nos amb un format i descartar l'altre: és enviar-ne un de cada, cada setmana. Es complementen a la perfecció i cadascun fa una feina diferent.</p>
-        
-        <div class="comparison">
-            <div class="mail-type">
-                <h3>📧 Mail 1 · Botiga</h3>
-                <p>El corporatiu, amb estructura</p>
-                <p>Ensenya coses en català, amb humor, format fix i enllaç directe a producte.<br><strong>El motor de vendes.</strong></p>
-            </div>
-            <div style="font-size: 2rem;">+</div>
-            <div class="mail-type">
-                <h3>💬 Mail 2 · Personal</h3>
-                <p>El storytelling, gamberro</p>
-                <p>Explica el dia a dia, les anècdotes i el darrere l'escenari.<br><strong>El motor de connexió i confiança.</strong></p>
-            </div>
-        </div>
-        
-        <p style="margin-top: 20px;">Dos mails a la setmana no és massa: és el que fa que un porti clients i l'altre en faci fans.</p>
-    </div>
+    <p>Dos mails a la setmana no és massa: és el que fa que un porti clients i l'altre en faci fans.</p>
+  </section>
 
-    <!-- METRICS -->
-    <div class="metrics">
-        <div class="metric-item">
-            <span class="metric-number">30.000</span>
-            <span class="metric-label">seguidors Instagram</span>
-        </div>
-        <div class="metric-item">
-            <span class="metric-number">9.000</span>
-            <span class="metric-label">seguidors Facebook</span>
-        </div>
-        <div class="metric-item">
-            <span class="metric-number">?</span>
-            <span class="metric-label">clients per convertir</span>
-        </div>
-        <p style="margin-top: 15px; font-style: italic;">amb el mail</p>
-    </div>
+  <!-- ================= MÈTRIQUES ================= -->
+  <section class="bloc">
+    <div class="metrica"><span class="numero">30.000</span><span class="text">seguidors a Instagram</span> <span class="fletxa">→</span></div>
+    <div class="metrica"><span class="numero">9.000</span><span class="text">seguidors a Facebook</span> <span class="fletxa">→</span></div>
+    <div class="metrica"><span class="numero">?</span><span class="text">clients per convertir amb el mail</span></div>
+  </section>
 
-    <!-- NEXT STEPS -->
-    <div class="section next-steps">
-        <h2 class="section-title" style="border-bottom: none; padding-bottom: 0;">Per on seguim</h2>
-        <ol>
-            <li><strong>Segmentar qui compra i qui no</strong>, i tractar-los diferent: als que ja han comprat, escoltar-los; als que no, intentar reactivar-los.</li>
-            <li><strong>Crear lead magnets</strong> per portar cap al mail tota la gent que ara mateix només us segueix a Instagram i Facebook.</li>
-            <li><strong>Anar fent campanyes més dirigides</strong> a mesura que sapigueu què espera exactament la gent d'una botiga de productes en català.</li>
-        </ol>
-        <p style="margin-top: 20px; font-style: italic;">És una feina de picar pedra, sí. Però com més aviat comenceu, més aviat es veuen resultats.</p>
-    </div>
+  <!-- ================= PER ON SEGUIM ================= -->
+  <section class="bloc">
+    <h2>Per on seguim</h2>
+    <div class="pas"><div class="num-pas">1</div><p>Segmentar qui compra i qui no, i tractar-los diferent: als que ja han comprat, escoltar-los; als que no, intentar reactivar-los.</p></div>
+    <div class="pas"><div class="num-pas">2</div><p>Crear lead magnets per portar cap al mail tota la gent que ara mateix només ens segueix a Instagram i Facebook.</p></div>
+    <div class="pas"><div class="num-pas">3</div><p>Anar fent campanyes més dirigides a mesura que sapiguem què espera exactament la gent d'una botiga de productes en català.</p></div>
+    <p style="margin-top:20px;"><em>És una feina de picar pedra, sí. Però com més aviat comencem, més aviat es veuen resultats.</em></p>
+  </section>
 
-    <div style="text-align: center; margin-top: 30px; padding: 20px; color: #999; font-size: 0.85rem;">
-        Els Ximplets - Proposta de newsletter · pàg. 3
-    </div>
-</div>
+</main>
+
+<footer>
+  ELS XIMPLETS · Proposta de newsletter
+</footer>
+
+<script>
+  // Efecte suau: les seccions apareixen en fer scroll (desactivable per accessibilitat)
+  const observador = new IntersectionObserver((entrades) => {
+    entrades.forEach(entrada => {
+      if (entrada.isIntersecting) entrada.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.bloc').forEach(bloc => observador.observe(bloc));
+</script>
 
 </body>
 </html>
